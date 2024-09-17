@@ -1,8 +1,9 @@
 // Card Component
+
 const Card = ({ title, image, content }) => {
     return (
         <>
-            <div className="space-y-4 shadow-xl h-[250px] p-4">
+            <div className="space-y-4 shadow-xl h-[250px] p- m-5">
                 <img src={image} alt="Product" className="h-20" />
                 <p>{title}</p>
                 <p>{content}</p>

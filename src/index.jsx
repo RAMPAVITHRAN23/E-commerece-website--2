@@ -1,23 +1,32 @@
 import "./index.css";
 import ReactDOM from "react-dom/client"; // Updated import for ReactDOM
 import { v4 as uuidv4 } from "uuid";
-uuidv4();
+import { useState } from "react";
 
-// Function component
-import Card from "../component/Card/card";
-import Productdata from "../component/api/Dummydata";
-import Header from "../component/Header/header";
-import Footer from "../component/Footer/footer";
-
-// React Element
-const paraElement = <p>SPARK TUNE</p>;
+// Function components
+import Card from "./component/Card/card";
+import Header from "./component/Header/header";
+import Footer from "./component/Footer/footer";
+import { Productdata, Productdata2 } from "./component/api/Dummydata"; // Single import for both
+import Commentcomponent from "./component/CommentComponent/commentcomponent";
+import Counter from "./component/Counter/counter";
 
 // Applayout component
 const Applayout = () => {
+    // Declare state variable 'counts' and the setter function 'setCounts'
+    
+
     return (
         <>
             <Header />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+
+            <Commentcomponent />
+
+            <Counter/>
+
+
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 p-4">
                 {Productdata.map((items) => (
                     <Card
                         key={uuidv4()}
@@ -27,6 +36,7 @@ const Applayout = () => {
                     />
                 ))}
             </div>
+
         </>
     );
 };

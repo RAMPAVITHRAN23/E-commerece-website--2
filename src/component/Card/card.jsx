@@ -8,7 +8,7 @@ const Card = (props) => {
                 <p>{props.title}</p>
                 <p>{props.content}</p> {/* Fixed content access */}
                 
-                <Link to="/">
+                <Link to="/help">
                     <button className="bg-orange-400 p-2 rounded-lg">Add to cart</button>
                 </Link>
             </div>

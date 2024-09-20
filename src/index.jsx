@@ -8,6 +8,7 @@ import Card from "./component/Card/card";
 import Header from "./component/Header/header";
 import Footer from "./component/Footer/footer";
 import ErrorPage from "./component/ErrorPage/errorpage";
+import Contact from "./component/Contact/contact";
 // import { Productdata } from "./component/api/Dummydata";
 // import Commentcomponent from "./component/CommentComponent/commentcomponent";
 // import Counter from "./component/Counter/counter";
@@ -15,7 +16,7 @@ import ErrorPage from "./component/ErrorPage/errorpage";
 // Applayout component
 const Applayout = () => {
     useEffect(() => {
-        console.log("Hello");
+        console.log("");
     }, []);
 
     return (
@@ -60,6 +61,12 @@ const router = createBrowserRouter([
                 path: "*",
                 element: <ErrorPage/>
             },
+
+            {
+                path: "/contact",
+                element:<Contact />
+                
+            }
         ],
         errorElement: <ErrorPage/>
         

@@ -27,7 +27,7 @@ const Body = () => {
                         <Card
                             key={item.id}
                             title={item.title}
-                            image={item.image} // Assuming item.image contains the correct URL
+                            image={"https://i.imgur.com/1twoaDy.jpeg"} // Assuming item.image contains the correct URL
                         />
                     );
                 })

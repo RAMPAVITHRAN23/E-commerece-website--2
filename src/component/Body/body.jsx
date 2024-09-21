@@ -20,20 +20,27 @@ const Body = () => {
 
     return (
         <>
+
+            <div className="2xl:container mx-auto">
+                <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {productData.length > 0 ? (
+                        productData.map((item) => {
+                            return (
+                                <Card
+                                    key={item.id}
+                                    title={item.title}
+                                    image={"https://i.imgur.com/1twoaDy.jpeg"}
+                                    description={item.description}
+                                    price={item.price}
+                                    category={item.category}// Assuming item.image contains the correct URL
+                                />);
+                        }
+                        )) : (
+                        <p>Loading products...</p> // Loading message while data is being fetched
+                    )}
+                </div>
+            </div>
             <p>Hello body</p>
-            {productData.length > 0 ? (
-                productData.map((item) => {
-                    return (
-                        <Card
-                            key={item.id}
-                            title={item.title}
-                            image={"https://i.imgur.com/1twoaDy.jpeg"} // Assuming item.image contains the correct URL
-                        />
-                    );
-                })
-            ) : (
-                <p>Loading products...</p> // Loading message while data is being fetched
-            )}
         </>
     );
 };

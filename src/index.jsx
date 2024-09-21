@@ -1,17 +1,22 @@
 import "./index.css";
 import ReactDOM from "react-dom/client";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 // Function components
-import Card from "./component/Card/card";
+
 import Header from "./component/Header/header";
 import Footer from "./component/Footer/footer";
 import ErrorPage from "./component/ErrorPage/errorpage";
-import Contact from "./component/Contact/contact";
+import Body from "./component/Body/body";
+
 // import { Productdata } from "./component/api/Dummydata";
 // import Commentcomponent from "./component/CommentComponent/commentcomponent";
 // import Counter from "./component/Counter/counter";
+const Card = lazy(() => import ("./component/Card/card"))
+const Contact = lazy(() => import("./component/Contact/contact"))
+const Help = lazy(() => import("./component/Help/help"))
+const Content = lazy(() => import("./component/Content/content"))
 
 // Applayout component
 const Applayout = () => {
@@ -22,20 +27,7 @@ const Applayout = () => {
     return (
         <>
             <Header />
-            {/* <Commentcomponent />
-            <Counter />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 p-4">
-                {Productdata.map((item) => (
-                    <Card
-                        key={item.id}
-                        title={item.title}
-                        image={item.image}
-                        content={item.content}
-                    />
-                ))}
-            </div> */}
             <Outlet />
-
             <Footer />
         </>
     );
@@ -47,29 +39,60 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Applayout />,
-        
+
         children: [
+
+            {
+
+                path: "/",
+                element: (
+                    <Suspense fallback={"Loading....."}>
+                        <Body />
+                    </Suspense>
+                )
+            },
             {
                 path: "/offer",
-                element: <Card/>
+                element: (
+                    <Suspense fallback={"Loading......"}>
+                        <Card/>
+                    </Suspense>
+                )
             },
             {
                 path: "/help",
-                element: <p>Help Page</p>
+                element: (
+                    <Suspense fallback={"Loading....."}>
+                        <Help/>
+                    </Suspense>
+                )
             },
             {
                 path: "*",
-                element: <ErrorPage/>
+                element: (
+                    <Suspense fallback={"Loading....."}>
+                        <ErrorPage/>
+                    </Suspense>
+                )
             },
 
             {
                 path: "/contact",
-                element:<Contact />
-                
-            }
+                element: (
+                    <Suspense fallback={"Loading....."}>
+                        <Contact/>
+                    </Suspense>
+                )
+
+            },
+
+            {
+                path: "/images",
+                element: <Content />
+            },
         ],
-        errorElement: <ErrorPage/>
-        
+        errorElement: <ErrorPage />
+
     },
 
     // Add other routes here

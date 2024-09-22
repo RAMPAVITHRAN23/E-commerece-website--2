@@ -11,7 +11,7 @@ const Content = () => {  // Ensure the component name starts with an uppercase l
                 effect="blur"
                 wrapperProps={{
                     // If you need to, you can tweak the effect transition using the wrapper style.
-                    style: { transitionDelay: "0.1s" },
+                    style: { transitionDelay: "0.3s" },
                 }}
                 src={bmwimage}
             />
